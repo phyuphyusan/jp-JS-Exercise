@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Digital Clock</title>
+	<link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		@font-face{
+			
+			/*font-family: ,sans-serif;*/
+		}
+		html,body{
+			height: 100%;
+		}
+		body{
+			display: grid;
+			place-items: center;
+		}
+		.clock{
+			background: black;
+			height: 120px;
+			width: 500px;
+			line-height: 120px;
+			padding: 0 5px;
+			text-align: center;
+			box-shadow: -3px -3px 7px rgba(255,255,255,0.05),
+						3px 3px 5px rgba(0,0,0,0.05);
+		}
+		.display{
+			font-size: 60px;
+			color: red;
+			letter-spacing: 5px;
+		}
+	</style>
+
+
+</head>
+<body>
+
+	<div class="clock"> 
+		<div class="display">
+	
+		</div>
+	</div>
+	<script type="text/javascript">
+		setInterval(function()
+		{
+			const clock = document.querySelector(".display");
+			let time = new Date();
+			let sec = time.getSeconds();
+			let min = time.getMinutes();
+			let hr = time.getHours();
+			let day='AM';
+			if(hr > 12){
+				day='PM';
+				hr = hr-12;
+			}
+			if(hr == 0){
+				hr = 12;
+			}
+			if(sec < 10){
+				sec = '0'+sec;
+			}
+			if(min < 10){
+				min = '0'+min;
+			}
+			if(hr < 10){
+				hr = '0'+hr;
+			}
+			clock.textContent=hr + ':' +min +':'+sec+' ' +day;
+		});
+		
+	</script>
+
+
+</body>
+</html>

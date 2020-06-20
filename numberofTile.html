@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculate Number Of Tile</title>
+	<style type="text/css">
+		* {
+ 			 box-sizing: border-box;
+		}
+		form {
+			margin-left: 25%;
+			width: 50%;
+		}
+		body{
+			background-color: #f5f5f0;
+			color: #2d862d;
+			/*color: black;*/
+		}
+		#btn{
+			background-color: #39ac39;
+			padding:12px;
+			color: white;
+			text-align: center;
+			border: none;
+			margin-left: 37%;
+		}
+		input[type=text]{
+			width: 100%;
+ 			padding: 12px;
+  			border: 1px solid #ccc;
+  			border-radius: 4px;
+  			resize: vertical;
+		}
+	</style>
+<body>
+	<script type="text/javascript">
+		function hideFun(){
+			document.getElementById("tfeet").style.display = "block";
+			document.getElementById("tlw").style.display = "none";
+		}
+		function hideFunction(){
+			document.getElementById("tlw").style.display = "block";
+			document.getElementById("tfeet").style.display = "none";	
+		}	
+		function calculateFloor(){
+			rl=parseInt(document.mainForm.rlength.value);
+			rw=parseInt(document.mainForm.rwidth.value);
+			ft=parseInt(document.mainForm.feet.value);
+			cal=(rl*rw)/(ft**2);
+			res=cal+cal*0.05;
+			document.mainForm.textBoxSum.value=Math.round(res);
+			}
+			function calculateWall(){
+				rl=parseInt(document.mainForm.rlength.value);
+				rw=parseInt(document.mainForm.rwidth.value);
+				tl=parseInt(document.mainForm.tlength.value);
+				tw=parseInt(document.mainForm.twidth.value);
+				cal=(rl*rw)*144/(tl*tw);
+				res=cal+cal*0.05;
+				document.mainForm.textBoxSum.value=Math.round(res);
+			}
+	</script>
+	<h1 align="center">Calculate The Number Of Tile</h1>
+	
+	<form name="mainForm">
+		<fieldset>
+		<legend><h3>For Room</h3></legend>
+		<label>Room Length:</label>
+		<input type="text" name="rlength"><br><br>
+		<label>Room Width:</label>
+		<input type="text" name="rwidth"><br><br>
+		</fieldset>
+
+		<fieldset>
+			<legend><h3>For Tile</h3></legend>
+			<label>Floor </label>
+			<input type="radio" id="floor" name="rd" onclick="hideFun()">
+			<label>Wall </label>
+			<input type="radio" id="wall" name="rd" onclick="hideFunction()"><br><br>
+
+			<div id="tlw">
+				<label>Tile Length(Inches):</label>
+				<input type="text" name="tlength"><br><br>
+				<label>Tile Width(Inches):</label>
+				<input type="text" name="twidth"><br><br>
+				<input type="button" id="btn" value="Calculate For Wall" onclick="javascript:calculateWall()">
+			</div>
+			
+			<div id="tfeet">
+				<label>Tile(Feet):</label>
+				<input type="text" name="feet"><br><br>
+				<input type="button" id="btn" value="Calculate For Floor" onclick="javascript:calculateFloor()">
+			</div>
+
+			<label>Number Of Tiles : </label>
+			<input type="text" name="textBoxSum" readonly="readonly">
+		</fieldset>	
+	</form>
+</body>
+</html>
